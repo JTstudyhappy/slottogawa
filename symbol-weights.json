@@ -13,11 +13,11 @@
     },
     "symbols": {
         "coin_1": { "weight": 30 },
-        "coin_stack": { "weight": 7.5 },
-        "coin_pile": { "weight": 2.5 },
+        "coin_stack": { "weight": 10 },
+        "coin_pile": { "weight": 5 },
 
-        "gem_1": { "weight": 17.5 },
-        "gem_many": { "weight": 2.5 },
+        "gem_1": { "weight": 15 },
+        "gem_many": { "weight": 5 },
 
         "bomb_1": { "weight": 15 },
         "bomb_atom": { "weight": 5 },
