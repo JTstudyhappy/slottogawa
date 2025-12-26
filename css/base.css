@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
+:root {
+    /* 调色板：西部/蒸汽朋克/复古 */
+    --bg-wall: #1a120f;
+    --cabinet-body: #4E342E;
+    --cabinet-trim: #8D6E63;
+    --cabinet-gold: #FFB300;
+    --screen-bg: #2b2b2b;
+    --screen-glow: #d4c5a8;
+    --pixel-dark: #261612;
+    --lamp-off: #3e2723;
+    --lamp-on: #ff5722;
+    --text-gold: #FFECB3;
+}
+
+* {
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-wall);
+    /* 棕色渐变动画背景 */
+    background: linear-gradient(135deg, #2d2420 0%, #1a120f 50%, #3E2723 100%);
+    background-size: 400% 400%;
+    animation: bg-gradient-shift 15s ease infinite;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Press Start 2P', 'Courier New', monospace, sans-serif;
+    overflow: hidden;
+}
+
+@keyframes bg-gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes hover-breath-group {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes hover-breath-cabinet {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes noise {
+    0% { transform: translate(0,0); }
+    10% { transform: translate(-5%,-5%); }
+    20% { transform: translate(-10%,5%); }
+    30% { transform: translate(5%,-10%); }
+    40% { transform: translate(-5%,15%); }
+    50% { transform: translate(-10%,5%); }
+    60% { transform: translate(15%,0); }
+    70% { transform: translate(0,10%); }
+    80% { transform: translate(-15%,0); }
+    90% { transform: translate(10%,5%); }
+    100% { transform: translate(5%,0); }
+}

@@ -1,0 +1,204 @@
+.controls-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -70px;
+    z-index: 10;
+    position: relative;
+    animation: hover-breath-group 6s ease-in-out infinite reverse;
+}
+
+.controls-panel {
+    width: 520px;
+    height: 190px;
+    background: #3E2723;
+    border-radius: 20px 20px 0 0;
+    padding: 5px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    border: none;
+    transform: perspective(600px) rotateX(45deg);
+    transform-origin: bottom center;
+    box-shadow:
+        inset 0 2px 5px rgba(255,255,255,0.1),
+        inset 0 -5px 10px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 12;
+}
+
+.controls-top-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    width: 100%;
+}
+
+.bet-controls-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.controls-stand {
+    width: 520px;
+    height: 160px;
+    background: linear-gradient(90deg, #2d1e1b 0%, #4E342E 20%, #5D4037 50%, #4E342E 80%, #2d1e1b 100%);
+    position: relative;
+    margin-top: -5px;
+    z-index: 11;
+    box-shadow:
+        -4px 0 0 #1a120f,
+        4px 0 0 #1a120f,
+        0 4px 0 #1a120f,
+        inset 0 10px 20px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stand-detail-lines {
+    width: 60%;
+    height: 80%;
+    background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 10px,
+        rgba(0,0,0,0.3) 10px,
+        rgba(0,0,0,0.3) 12px
+    );
+    border-top: 2px solid rgba(0,0,0,0.5);
+    border-bottom: 2px solid rgba(255,255,255,0.05);
+}
+
+.stand-rivets {
+    position: absolute;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle at 30% 30%, #8D6E63, #281A16);
+    border-radius: 50%;
+    box-shadow: 1px 1px 0 rgba(255,255,255,0.1);
+}
+
+.stand-rivets.left { left: 20px; }
+.stand-rivets.right { right: 20px; }
+
+.main-control-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-bar-btn {
+    width: 120px;
+    height: 50px;
+    background: #5D4037;
+    border: 3px solid #281A16;
+    color: #FFECB3;
+    font-family: 'Press Start 2P', 'Courier New', monospace;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 0 6px 0 #1a120f;
+    transition: all 0.1s;
+    text-shadow: 1px 1px 0 #000;
+    border-radius: 20px;
+}
+
+.control-bar-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #1a120f;
+}
+
+.control-bar-btn:disabled {
+    filter: grayscale(0.8);
+    cursor: not-allowed;
+}
+
+.exit-btn { background: #816300; }
+.ad-btn { background: #8d3400; }
+
+.bet-btn {
+    width: 60px;
+    height: 40px;
+    background: #5D4037;
+    border: 2px solid #281A16;
+    color: #FFECB3;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 #1a120f;
+    border-radius: 8px;
+    transition: all 0.1s;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.bet-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #1a120f;
+}
+
+.bet-btn.active {
+    background: #FFB300;
+    color: #281A16;
+    border-color: #FFECB3;
+    box-shadow: 0 4px 0 #816300;
+}
+
+.bet-btn.active:active { box-shadow: 0 0 0 #816300; }
+
+.action-btn {
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle at 30% 30%, #8D6E63, #3E2723);
+    border-radius: 50%;
+    border: 4px solid #281A16;
+    box-shadow:
+        0 8px 0 #1a120f,
+        0 15px 10px rgba(0,0,0,0.4);
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 12px;
+    color: #FFECB3;
+    text-shadow: 1px 1px 0 #000;
+    transition: transform 0.1s;
+}
+
+.action-btn:active {
+    transform: translateY(8px);
+    box-shadow: 0 0 0 #1a120f, inset 0 5px 10px rgba(0,0,0,0.6);
+}
+
+.action-btn:disabled {
+    filter: grayscale(0.8);
+    cursor: not-allowed;
+}
+
+.coin-slot {
+    margin-top: 10px;
+    width: 60px;
+    height: 10px;
+    background: #000;
+    border-radius: 5px;
+    border-bottom: 2px solid #fff;
+}
+
+/* 左上角 BGM 开关：复用 control-bar-btn 的视觉风格 */
+.bgm-toggle-btn {
+    position: fixed;
+    left: 12px;
+    top: 12px;
+    width: 140px;
+    height: 40px;
+    z-index: 999;
+    font-size: 10px;
+}

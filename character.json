@@ -1,0 +1,31 @@
+{
+  "_comment": "角色前景配置：waiter和boss的交互设定",
+  "_help": {
+    "waiter_upgrade_costs": "点击waiter升级所需的宝石数量",
+    "boss": {
+      "scale": "缩放比例 (1.0 = 原始大小)",
+      "idle_x_px": "静止时水平偏移 (正数向右，负数向左)",
+      "idle_y_px": "静止时垂直偏移 (正数向上，负数向下)",
+      "spin_x_px": "Spin时滑出的水平位置 (相对于屏幕边缘)"
+    },
+    "waiter": {
+      "scale": "缩放比例",
+      "idle_x_px": "静止时水平偏移 (正数向左，负数向右)",
+      "idle_y_px": "静止时垂直偏移",
+      "spin_x_px": "Spin时滑出的水平位置"
+    }
+  },
+  "waiter_upgrade_costs": [10, 50, 100, 200, 1680],
+  "boss": {
+    "scale": 0.6,
+    "idle_x_px": 450,
+    "idle_y_px": 150,
+    "spin_x_px": 300
+  },
+  "waiter": {
+    "scale": 0.8,
+    "idle_x_px": 450,
+    "idle_y_px": 50,
+    "spin_x_px": 350
+  }
+}

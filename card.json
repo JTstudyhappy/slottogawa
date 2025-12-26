@@ -1,0 +1,56 @@
+{
+  "_comment": "卡片配置：用于控制卡片文本描述、出现概率、图标路径、字体等。",
+  "_help": {
+    "probability": "出现权重（推荐按百分比写，例如 20 表示 20%）。实际抽取是按权重比例计算：p_i = w_i / sum(w)。",
+    "icon_path": "卡片图标路径（相对项目根目录）。建议放在 image/card/ 下。",
+    "description": "卡片在卡槽中显示的文字描述。",
+    "font_family": "卡片文字字体（CSS font-family）。",
+    "font_size_px": "卡片文字字号（像素）。",
+    "notes": [
+      "卡片类型 key 必须与前端逻辑一致（slow/double/bomb/cashout/escape/shield）。",
+      "如果图标文件不存在，会自动回退为显示卡片 key 文本。"
+    ]
+  },
+  "defaults": {
+    "font_family": "'Press Start 2P', 'Courier New', monospace, sans-serif",
+    "font_size_px": 10
+  },
+  "cards": {
+    "slow": {
+      "name": "冷眼",
+      "description": "降低转轮速度",
+      "probability": 20,
+      "icon_path": "image/card/card_slow.png"
+    },
+    "double": {
+      "name": "双倍",
+      "description": "提升本次收益",
+      "probability": 10,
+      "icon_path": "image/card/card_double.png"
+    },
+    "bomb": {
+      "name": "炸弹",
+      "description": "炸弹概率翻倍",
+      "probability": 10,
+      "icon_path": "image/card/card_bomb.png"
+    },
+    "cashout": {
+      "name": "提现",
+      "description": "返还投入金币",
+      "probability": 20,
+      "icon_path": "image/card/card_cashout.png"
+    },
+    "escape": {
+      "name": "逃跑",
+      "description": "EXIT\n可以提前结算",
+      "probability": 20,
+      "icon_path": "image/card/card_escape.png"
+    },
+    "shield": {
+      "name": "护盾",
+      "description": "防止扣除金币",
+      "probability": 20,
+      "icon_path": "image/card/card_shield.png"
+    }
+  }
+}

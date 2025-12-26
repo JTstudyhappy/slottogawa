@@ -1,0 +1,241 @@
+/* ===================== 角色前景系统 ===================== */
+.character-layer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 500;
+}
+
+.character {
+    position: absolute;
+    height: 85vh;
+    max-height: 700px;
+    width: auto;
+    pointer-events: auto;
+    cursor: pointer;
+    image-rendering: pixelated;
+    filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5));
+    transform-origin: bottom center;
+    
+    /* 使用独立的 transform 属性（CSS Transform Level 2）*/
+    /* translate 和 scale 可以被 transition 控制 */
+    /* rotate 可以被 animation 控制 */
+    translate: var(--current-x, 0px) var(--current-y, 0px);
+    scale: var(--current-scale, 1);
+    
+    /* 位置和缩放的平滑过渡 */
+    transition: translate 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                scale 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* 摆动动画只控制 rotate，速度由 CSS 变量控制 */
+    animation: char-sway var(--sway-duration, 4s) ease-in-out infinite;
+}
+
+/* 极小的摆动动画：只控制 rotate */
+@keyframes char-sway {
+    0%, 100% { rotate: 0deg; }
+    50% { rotate: 1.5deg; }
+}
+
+/* Boss 在左边 */
+.character-boss {
+    left: 0;
+    bottom: var(--boss-y, 0px);
+    /* idle 状态位置 */
+    --current-x: var(--boss-x, 80px);
+    --current-y: 0px;
+    --current-scale: var(--boss-scale, 1);
+}
+
+.character-boss.spin-active {
+    /* spin 状态位置 */
+    --current-x: var(--boss-spin-x, -200px);
+}
+
+/* Waiter 在右边 */
+.character-waiter {
+    right: 0;
+    bottom: var(--waiter-y, 0px);
+    /* idle 状态位置（右侧取反） */
+    --current-x: calc(-1 * var(--waiter-x, 80px));
+    --current-y: 0px;
+    --current-scale: var(--waiter-scale, 1);
+}
+
+.character-waiter.spin-active {
+    /* spin 状态位置（右侧取反） */
+    --current-x: calc(-1 * var(--waiter-spin-x, -200px));
+}
+
+/* 角色悬停效果 */
+.character:hover {
+    filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) brightness(1.1);
+    /* 悬停时暂停摆动，避免干扰点击 */
+    animation-play-state: paused;
+}
+
+.character:active {
+    /* 点击时轻微缩小 */
+    scale: calc(var(--current-scale, 1) * 0.98);
+}
+
+/* Waiter 特殊悬停（可交互提示） */
+.character-waiter:hover::after {
+    content: '💎';
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    animation: gem-float 1s ease-in-out infinite;
+}
+
+@keyframes gem-float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===================== CG 更新动画（像素擦除效果） ===================== */
+.character.cg-updating {
+    /* 同时运行两个动画：保留位置摆动 + 像素擦除效果 */
+    animation: char-sway 4s ease-in-out infinite, pixel-dissolve 0.6s steps(8) forwards;
+}
+
+@keyframes pixel-dissolve {
+    /* 只改变 filter 和 clip-path，不触碰 transform */
+    0% { 
+        filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) contrast(1);
+        clip-path: inset(0 0 0 0);
+    }
+    25% {
+        filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) contrast(1.5) brightness(1.2);
+        clip-path: polygon(0 0, 100% 0, 100% 25%, 75% 25%, 75% 50%, 50% 50%, 50% 75%, 25% 75%, 25% 100%, 0 100%);
+    }
+    50% {
+        filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) contrast(2) brightness(1.5);
+        clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+    }
+    75% {
+        filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) contrast(1.5) brightness(1.2);
+    }
+    100% {
+        filter: drop-shadow(4px 4px 8px rgba(0,0,0,0.5)) contrast(1);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* ===================== 提示弹窗（非浏览器原生） ===================== */
+.character-toast {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: linear-gradient(180deg, #3E2723 0%, #1a0f0a 100%);
+    border: 3px solid #5D4037;
+    border-radius: 8px;
+    padding: 15px 25px;
+    color: #FFECB3;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    text-align: center;
+    z-index: 2000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease-out;
+    box-shadow: 
+        0 4px 15px rgba(0,0,0,0.6),
+        inset 1px 1px 3px rgba(255,255,255,0.1);
+}
+
+.character-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+}
+
+.character-toast .toast-icon {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.character-toast .toast-text {
+    line-height: 1.6;
+}
+
+.character-toast .toast-cost {
+    color: #FF5252;
+    margin-top: 5px;
+}
+
+/* ===================== Waiter对话气泡 ===================== */
+.waiter-dialogue-bubble {
+    position: fixed;
+    min-width: 200px;
+    max-width: 320px;
+    background: #C0C0C0;
+    border: 4px solid #1a1a1a;
+    padding: 12px 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    z-index: 600;
+    pointer-events: none;
+    box-shadow: 
+        0 4px 0 #808080,
+        0 8px 0 #404040,
+        4px 4px 8px rgba(0,0,0,0.5);
+    transition: opacity 0.2s, transform 0.2s;
+    transform-origin: bottom center;
+}
+
+.waiter-dialogue-bubble.hidden {
+    opacity: 0;
+    transform: translateY(10px) scale(0.9);
+    pointer-events: none;
+}
+
+.waiter-dialogue-bubble:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: bubble-bounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes bubble-bounce {
+    0% { transform: translateY(20px) scale(0.8); opacity: 0; }
+    60% { transform: translateY(-5px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.bubble-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* 气泡尾巴（指向waiter） */
+.bubble-tail {
+    position: absolute;
+    bottom: -16px;
+    right: 60px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 16px solid #C0C0C0;
+    filter: drop-shadow(0 4px 0 #808080);
+}
+
+.bubble-tail::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -14px;
+    width: 0;
+    height: 0;
+    border-left: 14px solid transparent;
+    border-right: 14px solid transparent;
+    border-top: 18px solid #1a1a1a;
+}

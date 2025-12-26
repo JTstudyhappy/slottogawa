@@ -1,0 +1,55 @@
+{
+  "_comment": "动画/特效参数配置：控制震动强度、粒子缩放、物理重力等。",
+  "_help": {
+    "shake": {
+      "reel_lock_intensity": "单个转轮锁定时的震动强度（像素）",
+      "reel_lock_duration_ms": "单个转轮锁定震动持续时间（毫秒）",
+      "all_lock_intensity": "全部转轮锁定时的震动强度（像素）",
+      "all_lock_duration_ms": "全部转轮锁定震动持续时间（毫秒）"
+    },
+    "glow": {
+      "reel_lock_color": "单个转轮锁定时的微光颜色（咖啡色/像素风格）",
+      "all_lock_color": "全部转轮锁定时的微光颜色（暗金色）",
+      "jackpot_color": "全部一样（大奖）时的火花颜色"
+    },
+    "particles": {
+      "coin_scale": "金币粒子缩放比例（建议 0.5~1.0，当前翻倍后为 0.8）",
+      "gem_scale": "宝石粒子缩放比例（当前翻倍后为 0.7）",
+      "spark_scale": "金属火花粒子缩放比例",
+      "gravity": "重力加速度（像素/帧²，越大掉得越快）",
+      "launch_speed_min": "发射最小初速度",
+      "launch_speed_max": "发射最大初速度",
+      "horizontal_spread": "水平扩散范围（像素）",
+      "fade_out_y": "粒子掉出屏幕多少像素后开始消失动画"
+    },
+    "launcher": {
+      "width_px": "发射器宽度",
+      "height_px": "发射器高度"
+    }
+  },
+  "shake": {
+    "reel_lock_intensity": 6,
+    "reel_lock_duration_ms": 150,
+    "all_lock_intensity": 12,
+    "all_lock_duration_ms": 300
+  },
+  "glow": {
+    "reel_lock_color": "rgba(139, 90, 43, 0.6)",
+    "all_lock_color": "rgba(255, 179, 0, 0.7)",
+    "jackpot_color": "rgba(255, 215, 0, 0.9)"
+  },
+  "particles": {
+    "coin_scale": 0.8,
+    "gem_scale": 0.7,
+    "spark_scale": 0.4,
+    "gravity": 0.35,
+    "launch_speed_min": 12,
+    "launch_speed_max": 22,
+    "horizontal_spread": 60,
+    "fade_out_y": 50
+  },
+  "launcher": {
+    "width_px": 30,
+    "height_px": 50
+  }
+}

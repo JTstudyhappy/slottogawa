@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>复古物理老虎机</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 左上角：BGM 开关（只控制背景音乐） -->
+    <button class="control-bar-btn bgm-toggle-btn" id="bgm-toggle-btn" type="button">BGM: ON</button>
+
+    <!-- 整个游戏机容器（用于整体震动） -->
+    <div class="machine-wrapper" id="machine-wrapper">
+
+        <div class="arcade-cabinet">
+            <!-- 机身外边缘发光层（仅老虎机主体） -->
+            <div class="machine-glow" id="machine-glow"></div>
+
+            <!-- 左侧蒸汽朋克管道发射器 -->
+            <div class="steampunk-pipe pipe-left" id="launcher-left">
+                <div class="pipe-structure">
+                    <div class="pipe-horizontal"></div>
+                    <div class="pipe-elbow"></div>
+                    <div class="pipe-vertical">
+                        <div class="pipe-band"></div>
+                        <div class="pipe-opening"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧蒸汽朋克管道发射器 -->
+            <div class="steampunk-pipe pipe-right" id="launcher-right">
+                <div class="pipe-structure">
+                    <div class="pipe-horizontal"></div>
+                    <div class="pipe-elbow"></div>
+                    <div class="pipe-vertical">
+                        <div class="pipe-band"></div>
+                        <div class="pipe-opening"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 顶部资产显示栏 -->
+            <div class="header-marquee currency-header">
+                <div class="currency-item">
+                    <img src="image/reel_pic/coin_stack.png" class="currency-icon" alt="Coins">
+                    <span id="coin-count">20</span>
+                </div>
+                <div class="currency-divider"></div>
+                <div class="currency-item">
+                    <img src="image/reel_pic/gem_many.png" class="currency-icon" alt="Gems">
+                    <span id="gem-count">0</span>
+                </div>
+                <div class="currency-divider"></div>
+                <div class="currency-item shop-btn" id="shop-btn">
+                    <span>SHOP</span>
+                </div>
+            </div>
+
+            <!-- 计数指示灯 -->
+            <div class="lights-row" id="lights-container">
+                <!-- JS 动态生成 -->
+            </div>
+
+            <!-- 屏幕区域 -->
+            <div class="screen-bezel">
+                <!-- 流水灯容器 -->
+                <div class="led-border" id="led-border">
+                    <!-- JS 生成 LED 点 -->
+                </div>
+                
+                <div class="screen-glass">
+                    <!-- 信息显示屏 (放入屏幕内部) -->
+                    <div class="info-display">
+                        <div id="status-text">INSERT COIN</div>
+                    </div>
+
+                    <!-- 赔付线指示箭头 -->
+                    <div class="payline-indicator payline-left">▶</div>
+                    <div class="payline-indicator payline-right">◀</div>
+                    <!-- 中间指示线 -->
+                    <div class="payline-rule"></div>
+
+                    <div class="slots-container">
+                        <div class="reel-window"><div class="reel-strip" id="reel-0"></div></div>
+                        <div class="reel-window"><div class="reel-strip" id="reel-1"></div></div>
+                        <div class="reel-window"><div class="reel-strip" id="reel-2"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End of arcade-cabinet -->
+
+        <!-- 控制台组合 (面板 + 立柱) -->
+        <div class="controls-group">
+            <div class="controls-panel">
+                <div class="controls-top-row">
+                    <button class="control-bar-btn exit-btn" id="exit-btn">EXIT</button>
+                    <div class="main-control-wrapper">
+                        <button class="action-btn" id="action-btn">SPIN</button>
+                    </div>
+                    <button class="control-bar-btn ad-btn" id="ad-btn">WATCH!</button>
+                </div>
+                
+                <!-- 倍率选择按钮 -->
+                <div class="bet-controls-row">
+                    <button class="bet-btn active" data-bet="5">5</button>
+                    <button class="bet-btn" data-bet="10">10</button>
+                    <button class="bet-btn" data-bet="20">20</button>
+                    <button class="bet-btn" data-bet="50">50</button>
+                    <button class="bet-btn" data-bet="100">100</button>
+                </div>
+            </div>
+            <div class="controls-stand">
+                <div class="stand-detail-lines"></div>
+                <div class="stand-rivets left"></div>
+                <div class="stand-rivets right"></div>
+                
+                <!-- 卡片抽屉 -->
+                <div class="card-drawer">
+                    <div class="drawer-handle"></div>
+                    <div class="cards-container" id="cards-container">
+                        <!-- JS 动态生成卡片 -->
+                        <!-- <div class="card-slot empty"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End of machine-wrapper -->
+
+    <!-- 角色前景层 -->
+    <div class="character-layer" id="character-layer">
+        <img class="character character-boss" id="character-boss" src="image/character/boss.png" alt="Boss">
+        <img class="character character-waiter" id="character-waiter" src="image/character/waiter.png" alt="Waiter">
+    </div>
+
+    <!-- Waiter对话气泡 -->
+    <div class="waiter-dialogue-bubble hidden" id="waiter-dialogue">
+        <div class="bubble-text"></div>
+        <div class="bubble-tail"></div>
+    </div>
+
+    <!-- 角色交互提示弹窗 -->
+    <div class="character-toast" id="character-toast">
+        <div class="toast-icon">💎</div>
+        <div class="toast-text">NOT ENOUGH GEMS</div>
+        <div class="toast-cost">NEED: 10 GEMS</div>
+    </div>
+
+    <!-- 引入配置和脚本 -->
+    <script type="module" src="js/script.js"></script>
+
+    <!-- 粒子容器（全屏，用于金币/宝石/火花） -->
+    <div class="particle-container" id="particle-container"></div>
+
+    <!-- 广告覆盖层 -->
+    <div id="ad-overlay" class="ad-overlay hidden">
+        <div class="ad-content">
+            <div class="ad-screen">
+                <video id="ad-video" class="ad-video-player"></video>
+                <div id="ad-timer" class="ad-timer">15</div>
+            </div>
+            <button id="ad-close-btn" class="ad-close-btn hidden">CLOSE (+10 COINS)</button>
+        </div>
+    </div>
+
+    <!-- 商店覆盖层 -->
+    <div id="shop-overlay" class="shop-overlay hidden">
+        <div class="shop-content">
+            <div class="shop-header">ITEM SHOP</div>
+            <div class="shop-items">
+                <div class="shop-item" id="buy-card-btn">
+                    <div class="shop-icon">🃏</div>
+                    <div class="shop-desc">RANDOM CARD</div>
+                    <div class="shop-cost">5 GEMS</div>
+                </div>
+                <div class="shop-item" id="buy-reel-btn">
+                    <div class="shop-icon">🎰</div>
+                    <div class="shop-desc">ADD REEL</div>
+                    <div class="shop-cost">50 GEMS</div>
+                </div>
+                <div class="shop-item" id="buy-adhack-btn">
+                    <div class="shop-icon">⚡</div>
+                    <div class="shop-desc">AD HACK</div>
+                    <div class="shop-cost">20 GEMS</div>
+                </div>
+            </div>
+            <button id="shop-close-btn" class="shop-close-btn">CLOSE</button>
+        </div>
+    </div>
+
+    <!-- 结算界面 -->
+    <div id="ending-overlay" class="ending-overlay hidden">
+        <div class="ending-content">
+            <div class="ending-title">✨ CONGRATULATIONS! ✨</div>
+            <div class="ending-message">你已经完全探索了丰川家的黑暗</div>
+            <button id="ending-confirm-btn" class="ending-confirm-btn">好的！</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "base_paths": {
+    "reel": "image/reel_pic/",
+    "card": "image/card/",
+    "ad": "ad/video/",
+    "character": "image/character/"
+  },
+  "ad_videos": [
+    "ad1.mp4",
+    "ad2.mp4",
+    "ad3.mp4",
+    "ad4.mp4",
+    "ad5.mp4"
+  ],
+  "reel_images": {
+    "bomb_1": "bomb_1.png",
+    "bomb_atom": "bomb_atom.png",
+    "card_item": "card_item.png",
+    "coin_1": "coin_1.png",
+    "coin_pile": "coin_pile.png",
+    "coin_stack": "coin_stack.png",
+    "gem_1": "gem_1.png",
+    "gem_many": "gem_many.png",
+    "random_item": "random_item.png"
+  },
+  "card_images": {
+    "slow": "card_slow.png",
+    "double": "card_double.png"
+  },
+  "character_images": {
+    "waiter": "waiter.png",
+    "waiter_1": "waiter_1.png",
+    "waiter_2": "waiter_2.png",
+    "waiter_3": "waiter_3.png",
+    "waiter_4": "waiter_4.png",
+    "boss": "boss.png",
+    "boss_1": "boss_1.png"
+  },
+  "说明": {
+    "路径拼接规则": "最终路径 = base_paths 对应前缀 + 文件名，例如 base_paths.reel + reel_images.bomb_1。",
+    "新增转轮素材": "将图片放入 image/reel_pic/，在 reel_images 内新增 key: 文件名；key 与符号键一致。",
+    "新增卡片素材": "将图片放入 image/card/，在 card_images 内新增 key: 文件名；key 与卡片类型字符串一致（如 slow、double）。",
+    "新增角色素材": "将图片放入 image/character/，在 character_images 内新增 key: 文件名。",
+    "新增广告视频": "将视频放入 ad/video/，在 ad_videos 数组追加文件名（如 new.mp4）。",
+    "修改路径或文件名": "要改目录就改 base_paths，对应项一起改；要改文件名就改对应列表值。"
+  }
+}

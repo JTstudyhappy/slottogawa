@@ -1,0 +1,13 @@
+{
+  "_comment": "广告系统配置",
+  "_help": {
+    "ad_coin": "观看一次广告获得的金币数量",
+    "ad_sec": "广告播放时长（秒）",
+    "ad_hack_sec": "开启广告黑客后的播放时长（秒）",
+    "ad_hack_coin_multiplier": "广告黑客的金币倍率"
+  },
+  "ad_coin": 10,
+  "ad_sec": 15,
+  "ad_hack_sec": 5,
+  "ad_hack_coin_multiplier": 2
+}

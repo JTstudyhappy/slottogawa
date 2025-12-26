@@ -1,0 +1,23 @@
+{
+    "_comment": "符号数值配置：本文件用于定义每个符号的默认奖励/惩罚数值。前端结算会读取 symbols 中的配置。",
+    "_help": {
+        "schema": "symbols.<symbol_id> 的字段说明",
+        "type": "符号类型：coin/gem/bomb/card/random。用于判断同类连线奖励与特殊逻辑。",
+        "coins": "命中该符号时获得/失去的金币数量（可为负）。",
+        "gems": "命中该符号时获得的宝石数量（可为负，通常不建议）。"
+    },
+    "symbols": {
+        "coin_1": { "type": "coin", "coins": 5, "gems": 0 },
+        "coin_stack": { "type": "coin", "coins": 10, "gems": 0 },
+        "coin_pile": { "type": "coin", "coins": 20, "gems": 0 },
+
+        "gem_1": { "type": "gem", "coins": 0, "gems": 1 },
+        "gem_many": { "type": "gem", "coins": 0, "gems": 3 },
+
+        "bomb_1": { "type": "bomb", "coins": -20, "gems": 0 },
+        "bomb_atom": { "type": "bomb", "coins": -50, "gems": 0 },
+
+        "card_item": { "type": "card", "coins": 0, "gems": 0 },
+        "random_item": { "type": "random", "coins": 0, "gems": 0 }
+    }
+}

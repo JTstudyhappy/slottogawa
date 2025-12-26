@@ -1,0 +1,64 @@
+{
+  "_comment": "音频配置：所有BGM/SFX都从这里加载（路径为相对站点根目录）",
+  "_help": {
+    "volumes": {
+      "bgm": "背景音乐音量（0~1）",
+      "sfx": "交互/音效音量（0~1）",
+      "voice": "角色语音音量（0~1），用于waiter和ending音效"
+    },
+    "bgm": "三阶段背景音乐：根据当前金币数 coins 自动切换（min_coins <= coins < max_coins）。注意：浏览器通常需要一次用户交互后才能开始播放音频。",
+    "bgm_item": {
+      "id": "曲目ID（内部用于切换/去重）",
+      "min_coins": "该BGM生效的最低金币数（含）",
+      "max_coins": "该BGM生效的最高金币数（不含）",
+      "src": "音频文件路径，例如 music/bgm/bgm_1.mp3"
+    },
+    "sfx": {
+      "card_select": "选择/取消选择卡牌的音效：music/sound/card.mp3",
+      "button_entry": "进入/打开某个界面或触发核心按钮的基础点击音效（watch、选择倍率、spin、shop 等）：music/sound/button/entry.mp3",
+      "button_exit": "退出/关闭界面或取消动作的基础点击音效（exit、广告close、shop close、取消选择卡牌等）：music/sound/button/exit.mp3",
+      "reel_spin": "转轮转动循环音效：music/sound/reels.mp3。会根据转轮速度调整 playbackRate，最大转速时约为 3x。",
+      "lock": "核心按钮锁定（STOP / 单个转轮锁定）音效：music/sound/lock.mp3",
+      "all_locked": "全部转轮锁定后的震频音效：music/sound/wave.mp3",
+      "coin_small": "金币爆出音效（<=10金币）：music/sound/coin_1.mp3",
+      "coin_mid": "金币爆出音效（11~50金币）：music/sound/coin_2.mp3",
+      "coin_big": "金币爆出音效（>50金币）：music/sound/coin_3.mp3",
+      "jackpot": "所有转轮都一样（Jackpot）音效：music/sound/jackpot.mp3",
+      "waiter": "点击waiter的语音/互动音效列表（第1~5次点击依次使用或随机使用，取决于实现）：music/cha/sound_1.mp3 ~ sound_5.mp3"
+    }
+  },
+  "volumes": {
+    "bgm": 0.4,
+    "sfx": 0.95,
+    "voice": 10
+  },
+  "bgm": [
+    { "id": "low", "min_coins": -999999, "max_coins": 5, "src": "music/bgm/bgm_1.mp3" },
+    { "id": "mid", "min_coins": 5, "max_coins": 99, "src": "music/bgm/bgm_2.mp3" },
+    { "id": "high", "min_coins": 100, "max_coins": 999999, "src": "music/bgm/bgm_3.mp3" },
+    { "id": "ending", "min_coins": 999999, "max_coins": 9999999, "src": "music/bgm/bgm_4.mp3" }
+  ],
+  "sfx": {
+    "card_select": "music/sound/card.mp3",
+    "button_entry": "music/sound/button/entry.mp3",
+    "button_exit": "music/sound/button/exit.mp3",
+    "reel_spin": "music/sound/reels.mp3",
+    "lock": "music/sound/lock.mp3",
+    "all_locked": "music/sound/wave.mp3",
+    "coin_small": "music/sound/coin_1.mp3",
+    "coin_mid": "music/sound/coin_2.mp3",
+    "coin_big": "music/sound/coin_3.mp3",
+    "gem_small": "music/sound/gem_1.mp3",
+    "gem_mid": "music/sound/gem_2.mp3",
+    "gem_big": "music/sound/gem_3.mp3",
+    "jackpot": "music/sound/jackpot.mp3",
+    "waiter": [
+      "music/cha/sound_1.mp3",
+      "music/cha/sound_2.mp3",
+      "music/cha/sound_3.mp3",
+      "music/cha/sound_4.mp3",
+      "music/cha/sound_5.mp3"
+    ],
+    "ending": "music/cha/sound_6.mp3"
+  }
+}

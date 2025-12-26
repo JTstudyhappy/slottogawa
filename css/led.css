@@ -1,0 +1,169 @@
+.led-border {
+    position: absolute;
+    top: -12px;
+    left: -12px;
+    right: -12px;
+    bottom: -12px;
+    pointer-events: none;
+    z-index: 100;
+}
+
+/* 黑金属外框 */
+.led-frame {
+    position: absolute;
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-radius: 3px;
+    box-shadow: 
+        inset 1px 1px 2px rgba(80, 80, 80, 0.4),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.8),
+        0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.led-frame.top, .led-frame.bottom {
+    left: 0;
+    right: 0;
+    height: 16px;
+}
+
+.led-frame.left, .led-frame.right {
+    top: 0;
+    bottom: 0;
+    width: 16px;
+}
+
+.led-frame.top { top: 0; }
+.led-frame.bottom { bottom: 0; }
+.led-frame.left { left: 0; }
+.led-frame.right { right: 0; }
+
+/* 灯条容器 */
+.led-strip {
+    position: absolute;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.led-strip.top { 
+    top: 0; 
+    left: 16px; 
+    right: 16px; 
+    height: 16px; 
+}
+
+.led-strip.bottom { 
+    bottom: 0; 
+    left: 16px; 
+    right: 16px; 
+    height: 16px; 
+    flex-direction: row-reverse; 
+}
+
+.led-strip.left { 
+    left: 0; 
+    top: 16px; 
+    bottom: 16px; 
+    width: 16px; 
+    flex-direction: column-reverse; 
+}
+
+.led-strip.right { 
+    right: 0; 
+    top: 16px; 
+    bottom: 16px; 
+    width: 16px; 
+    flex-direction: column; 
+}
+
+/* LED 灯座（镶嵌凹槽） */
+.led-socket {
+    width: 10px;
+    height: 10px;
+    background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        inset 1px 1px 3px rgba(0, 0, 0, 0.9),
+        inset -0.5px -0.5px 1px rgba(60, 60, 60, 0.3),
+        0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+/* LED 灯珠 */
+.led-dot {
+    width: 6px;
+    height: 6px;
+    background: #222;
+    border-radius: 50%;
+    box-shadow: inset 0.5px 0.5px 1px rgba(0, 0, 0, 0.9);
+    transition: background 0.08s, box-shadow 0.08s;
+}
+
+.led-dot.active-normal {
+    background: radial-gradient(circle at 30% 30%, #FFE066, #FFB300);
+    box-shadow: 
+        0 0 4px #FFB300, 
+        0 0 8px #FFB300,
+        0 0 12px rgba(255, 179, 0, 0.5);
+}
+
+.led-dot.active-red {
+    background: radial-gradient(circle at 30% 30%, #FF6666, #FF0000);
+    box-shadow: 
+        0 0 5px #FF0000, 
+        0 0 12px #FF0000,
+        0 0 18px rgba(255, 0, 0, 0.6);
+}
+
+.led-dot.active-fast {
+    background: radial-gradient(circle at 30% 30%, #66FF66, #00FF00);
+    box-shadow: 
+        0 0 5px #00FF00, 
+        0 0 12px #00FF00,
+        0 0 18px rgba(0, 255, 0, 0.6);
+}
+
+/* 四个角落的装饰螺丝 */
+.led-corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(145deg, #3a3a3a, #1a1a1a);
+    border-radius: 2px;
+    box-shadow: 
+        inset 1px 1px 2px rgba(80, 80, 80, 0.3),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.led-corner::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: linear-gradient(145deg, #2a2a2a, #151515);
+    border-radius: 50%;
+    box-shadow: 
+        inset 1px 1px 2px rgba(0, 0, 0, 0.8),
+        inset -0.5px -0.5px 1px rgba(70, 70, 70, 0.4);
+}
+
+/* 螺丝槽纹 */
+.led-corner::before {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 1px;
+    background: #0a0a0a;
+    z-index: 1;
+}
+
+.led-corner.top-left { top: 0; left: 0; }
+.led-corner.top-right { top: 0; right: 0; }
+.led-corner.bottom-left { bottom: 0; left: 0; }
+.led-corner.bottom-right { bottom: 0; right: 0; }
+
+.slots-container.reels-4 .reel-window { width: 22%; }
+.slots-container.reels-5 .reel-window { width: 18%; }

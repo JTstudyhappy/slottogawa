@@ -1,0 +1,28 @@
+{
+    "_comment": "权重/概率配置：用于控制后端生成转轮 strip 时各符号出现的相对概率。",
+    "_help": {
+        "how_it_works": "后端会把每个符号的 weight/probability 当作‘相对权重’传给 random.choices；实际出现概率 = 该符号权重 / 所有符号权重之和。",
+        "fields": {
+            "weight": "权重（推荐使用）。数值越大越容易出现；可为 0（表示几乎不出现）。",
+            "probability": "可选：如果你更喜欢按‘概率’写，也可以填 probability。只要是非负数即可（不要求总和为 1），后端同样按比例使用；当 weight 与 probability 同时存在时，优先使用 probability。"
+        },
+        "notes": [
+            "符号 key 必须与后端/资源一致（例如 coin_1、gem_1、bomb_atom 等）。",
+            "如果配置文件缺失、解析失败、或所有权重都为 0，会回退到内置默认权重。"
+        ]
+    },
+    "symbols": {
+        "coin_1": { "weight": 30 },
+        "coin_stack": { "weight": 7.5 },
+        "coin_pile": { "weight": 2.5 },
+
+        "gem_1": { "weight": 17.5 },
+        "gem_many": { "weight": 2.5 },
+
+        "bomb_1": { "weight": 15 },
+        "bomb_atom": { "weight": 5 },
+
+        "card_item": { "weight": 10 },
+        "random_item": { "weight": 5 }
+    }
+}
