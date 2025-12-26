@@ -339,12 +339,12 @@ class SlotMachine {
             // 低于等于20金币时，保持基础速度
             speedMultiplier = 1;
         } else if (this.coins >= 500) {
-            // 500金币及以上，达到4倍速度
-            speedMultiplier = 4;
+            // 500金币及以上，达到8倍速度
+            speedMultiplier = 8;
         } else {
             // 20-500之间线性插值
             const progress = (this.coins - 20) / (500 - 20);
-            speedMultiplier = 1 + progress * (4 - 1);
+            speedMultiplier = 1 + progress * (8 - 1);
         }
 
         // 基础周期 4s，速度倍数越高周期越短
