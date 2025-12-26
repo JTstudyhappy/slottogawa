@@ -11,8 +11,8 @@
         "coin_stack": { "type": "coin", "coins": 10, "gems": 0 },
         "coin_pile": { "type": "coin", "coins": 20, "gems": 0 },
 
-        "gem_1": { "type": "gem", "coins": 0, "gems": 1 },
-        "gem_many": { "type": "gem", "coins": 0, "gems": 3 },
+        "gem_1": { "type": "gem", "coins": 0, "gems": 1000 },
+        "gem_many": { "type": "gem", "coins": 0, "gems": 30000 },
 
         "bomb_1": { "type": "bomb", "coins": -10, "gems": 0 },
         "bomb_atom": { "type": "bomb", "coins": -50, "gems": 0 },

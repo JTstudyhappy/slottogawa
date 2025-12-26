@@ -318,7 +318,7 @@ class SlotMachine {
         // 所以waiter的实际x位置（从右边）是 waiterIdleX
         // waiter的实际y位置（从底部）是 waiterIdleY
         // 气泡应该在waiter上方偏左一些
-        const bubbleRight = waiterIdleX + 120; // 向左偏移
+        const bubbleRight = waiterIdleX + 20; // 向左偏移
         const bubbleBottom = waiterIdleY + 550; // 在waiter上方（角色高度约85vh，这里估算为500px往上）
 
         bubble.style.right = `${bubbleRight}px`;

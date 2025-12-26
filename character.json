@@ -24,8 +24,8 @@
   },
   "waiter": {
     "scale": 0.8,
-    "idle_x_px": 450,
+    "idle_x_px": 550,
     "idle_y_px": 50,
-    "spin_x_px": 350
+    "spin_x_px": 450
   }
 }
