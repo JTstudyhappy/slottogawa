@@ -5,13 +5,6 @@
     "ad": "ad/video/",
     "character": "image/character/"
   },
-  "ad_videos": [
-    "ad1.mp4",
-    "ad2.mp4",
-    "ad3.mp4",
-    "ad4.mp4",
-    "ad5.mp4"
-  ],
   "reel_images": {
     "bomb_1": "bomb_1.png",
     "bomb_atom": "bomb_atom.png",
@@ -36,6 +29,13 @@
     "boss": "boss.png",
     "boss_1": "boss_1.png"
   },
+  "ad_videos": [
+    "ad1.mp4",
+    "ad2.mp4",
+    "ad3.mp4",
+    "ad4.mp4", 
+    "ad5.mp4"
+  ],
   "说明": {
     "路径拼接规则": "最终路径 = base_paths 对应前缀 + 文件名，例如 base_paths.reel + reel_images.bomb_1。",
     "新增转轮素材": "将图片放入 image/reel_pic/，在 reel_images 内新增 key: 文件名；key 与符号键一致。",

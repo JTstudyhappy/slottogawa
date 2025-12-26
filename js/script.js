@@ -16,7 +16,7 @@
  * @module script
  */
 
-import { fetchAdConfig, fetchAnimeConfig, fetchCardConfig, fetchCharacterConfig, fetchConfig, fetchMusicConfig, fetchShopConfig, fetchSymbolValues, fetchSymbolWeights } from './api.js';
+import { fetchAdConfig, fetchAnimeConfig, fetchCardConfig, fetchCharacterConfig, fetchConfig, fetchMusicConfig, fetchShopConfig, fetchSymbolValues } from './api.js';
 import SlotMachine from './slot-machine.js';
 
 /**
@@ -38,10 +38,9 @@ window.addEventListener('DOMContentLoaded', () => {
         fetchAdConfig(),
         fetchShopConfig(),
         fetchCharacterConfig(),
-        fetchMusicConfig(),
-        fetchSymbolWeights()
+        fetchMusicConfig()
     ])
-        .then(([config, assets, symbolValues, cardConfig, animeConfig, adConfig, shopConfig, characterConfig, musicConfig, symbolWeights]) => 
+        .then(([config, assets, symbolValues, cardConfig, animeConfig, adConfig, shopConfig, characterConfig, musicConfig]) => 
             new SlotMachine(config, assets, symbolValues, cardConfig, animeConfig, adConfig, shopConfig, characterConfig, musicConfig))
         .catch(err => {
             console.error(err);

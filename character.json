@@ -18,7 +18,7 @@
   "waiter_upgrade_costs": [10, 50, 100, 200, 1680],
   "boss": {
     "scale": 0.6,
-    "idle_x_px": 450,
+    "idle_x_px": 400,
     "idle_y_px": 150,
     "spin_x_px": 300
   },
